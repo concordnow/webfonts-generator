@@ -85,7 +85,7 @@ Whether to generate CSS file.
 
 ### cssDest
 
-Type: `string`
+Type: `string` or `array`
 <br>
 Default: `path.join(options.dest, options.fontName + '.css')`
 

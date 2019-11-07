@@ -119,7 +119,11 @@ function writeResult(fonts, options) {
 	})
 	if (options.css) {
 		var css = renderCss(options)
-		writeFile(css, options.cssDest)
+		if (Array.isArray(options.cssDest)) {
+			options.cssDest.forEach((cssDest) => writeFile(css, cssDest));
+		} else {
+			writeFile(css, options.cssDest)
+		}
 	}
 	if (options.html) {
 		var html = renderHtml(options)
