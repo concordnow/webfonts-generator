@@ -75,6 +75,15 @@ Default: `'iconfont'`
 
 Name of font and base name of font files.
 
+### outputTransform
+
+Type: `function`
+<br>
+Default: `null`
+
+Optional function to use to transform output before writing file(s).
+This function takes 2 parameters: the final output and the file destination
+
 ### css
 
 Type: `boolean`

@@ -120,9 +120,19 @@ function writeResult(fonts, options) {
 	if (options.css) {
 		var css = renderCss(options)
 		if (Array.isArray(options.cssDest)) {
-			options.cssDest.forEach((cssDest) => writeFile(css, cssDest));
+      options.cssDest.forEach((cssDest) => {
+        var cssOutput = css
+        if (typeof options.outputTransform === 'function') {
+          cssOutput = options.outputTransform(css, cssDest)
+        }
+        writeFile(cssOutput, cssDest)
+      });
 		} else {
-			writeFile(css, options.cssDest)
+      var cssOutput = css
+      if (typeof options.outputTransform === 'function') {
+        cssOutput = options.outputTransform(css, options.cssDest)
+      }
+			writeFile(cssOutput, options.cssDest)
 		}
 	}
 	if (options.html) {
